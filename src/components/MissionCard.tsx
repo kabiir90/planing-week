@@ -113,57 +113,57 @@ export function MissionCard({ mission, index }: MissionCardProps) {
 
   return (
     <div 
-      className="bg-white rounded-xl border border-slate-200 p-5 hover:shadow-lg hover:border-indigo-300 transition-all duration-200"
+      className="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 active:scale-[0.99] transition-all duration-200 touch-manipulation"
       style={{ 
         animation: `fadeIn 0.4s ease-out ${index * 0.05}s both`
       }}
     >
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <div className="p-2 bg-indigo-50 rounded-lg border border-indigo-100">
-            <Icon className={`w-5 h-5 ${priorityColors[priority]}`} />
+      <div className="flex items-start justify-between mb-3 sm:mb-4 gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+          <div className="p-2 bg-indigo-50 rounded-lg border border-indigo-100 flex-shrink-0">
+            <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${priorityColors[priority]}`} />
           </div>
           
-          <div className="flex items-center gap-2 text-sm text-slate-600">
-            <Clock className="w-4 h-4" />
-            <span className="font-medium">{mission.time}</span>
+          <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-600 min-w-0">
+            <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
+            <span className="font-medium whitespace-nowrap">{mission.time}</span>
           </div>
         </div>
 
-        <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${config.bg} border ${config.border}`}>
-          <StatusIcon className={`w-3.5 h-3.5 ${config.text}`} />
-          <span className={`text-xs font-semibold ${config.text} uppercase`}>
+        <div className={`flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 rounded-full ${config.bg} border ${config.border} flex-shrink-0`}>
+          <StatusIcon className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${config.text}`} />
+          <span className={`text-xs font-semibold ${config.text} uppercase hidden sm:inline`}>
             {status.replace('-', ' ')}
           </span>
         </div>
       </div>
 
-      <div className="space-y-3">
-        <h3 className="text-base font-semibold text-slate-900 leading-snug">
+      <div className="space-y-2 sm:space-y-3">
+        <h3 className="text-sm sm:text-base font-semibold text-slate-900 leading-snug break-words">
           {mission.activity}
         </h3>
         
         {mission.focus && (
-          <div className="p-3 rounded-lg bg-indigo-50 border border-indigo-100">
+          <div className="p-2.5 sm:p-3 rounded-lg bg-indigo-50 border border-indigo-100">
             <div className="text-xs font-semibold text-indigo-700 uppercase mb-1">Focus</div>
-            <p className="text-sm text-slate-700">{mission.focus}</p>
+            <p className="text-xs sm:text-sm text-slate-700 break-words">{mission.focus}</p>
           </div>
         )}
         
         {mission.details && (
-          <p className="text-sm text-slate-600 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed break-words">
             {mission.details}
           </p>
         )}
       </div>
 
-      <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
-        <span className={`text-xs font-semibold ${priorityColors[priority]} uppercase tracking-wide`}>
+      <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+        <span className={`text-xs font-semibold ${priorityColors[priority]} uppercase tracking-wide truncate`}>
           {priority} Priority
         </span>
-        <div className="flex gap-1">
+        <div className="flex gap-1 flex-shrink-0">
           {[...Array(priority === 'high' ? 3 : priority === 'medium' ? 2 : 1)].map((_, i) => (
-            <div key={i} className={`w-1.5 h-5 rounded-full ${priority === 'high' ? 'bg-indigo-600' : 'bg-slate-400'}`}></div>
+            <div key={i} className={`w-1.5 h-4 sm:h-5 rounded-full ${priority === 'high' ? 'bg-indigo-600' : 'bg-slate-400'}`}></div>
           ))}
         </div>
       </div>

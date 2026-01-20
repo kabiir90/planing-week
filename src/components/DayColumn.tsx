@@ -18,29 +18,29 @@ export function DayColumn({ day, missions, focus, isSelected }: DayColumnProps) 
   const percentage = Math.round((completedCount / missions.length) * 100);
 
   return (
-    <div className="flex flex-col w-full space-y-6">
+    <div className="flex flex-col w-full space-y-4 sm:space-y-6">
       {/* Header Section */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-        <div className="flex items-start justify-between mb-5">
-          <div className="flex-1">
-            <div className="flex items-center gap-3 mb-3">
-              <h3 className="text-3xl font-bold text-slate-900">
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-sm">
+        <div className="flex items-start justify-between mb-4 sm:mb-5">
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 sm:gap-3 mb-3 flex-wrap">
+              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">
                 {day}
               </h3>
               {isToday && (
-                <div className="px-3 py-1 rounded-full bg-indigo-600 text-white text-xs font-semibold">
+                <div className="px-2.5 sm:px-3 py-1 rounded-full bg-indigo-600 text-white text-xs font-semibold whitespace-nowrap">
                   Today
                 </div>
               )}
             </div>
             
-            <div className="flex items-start gap-3 p-4 rounded-xl bg-slate-50 border border-slate-200">
-              <div className="p-2 bg-indigo-600 rounded-lg">
+            <div className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <div className="p-2 bg-indigo-600 rounded-lg flex-shrink-0">
                 <Target className="w-4 h-4 text-white" />
               </div>
-              <div className="flex-1">
+              <div className="flex-1 min-w-0">
                 <div className="text-xs font-semibold text-slate-500 uppercase mb-1">Daily Focus</div>
-                <p className="text-sm text-slate-900 font-medium">
+                <p className="text-sm text-slate-900 font-medium break-words">
                   {focus}
                 </p>
               </div>
@@ -49,15 +49,15 @@ export function DayColumn({ day, missions, focus, isSelected }: DayColumnProps) 
         </div>
 
         {/* Progress Section */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
+        <div className="space-y-3 sm:space-y-4">
+          <div className="flex items-center justify-between gap-2 flex-wrap">
             <div className="flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 text-indigo-600" />
+              <TrendingUp className="w-4 h-4 text-indigo-600 flex-shrink-0" />
               <span className="text-sm font-semibold text-slate-900">Daily Progress</span>
             </div>
-            <div className="flex items-center gap-3">
-              <span className="text-sm text-slate-600">{completedCount} / {missions.length} tasks</span>
-              <span className="text-lg font-bold text-indigo-600">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="text-xs sm:text-sm text-slate-600 whitespace-nowrap">{completedCount} / {missions.length} tasks</span>
+              <span className="text-base sm:text-lg font-bold text-indigo-600 whitespace-nowrap">
                 {percentage}%
               </span>
             </div>
@@ -70,25 +70,25 @@ export function DayColumn({ day, missions, focus, isSelected }: DayColumnProps) 
             ></div>
           </div>
 
-          <div className="grid grid-cols-3 gap-3">
-            <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3">
+            <div className="p-2.5 sm:p-3 rounded-xl bg-emerald-50 border border-emerald-200">
               <div className="text-xs text-emerald-700 font-medium mb-1">Completed</div>
-              <div className="text-xl font-bold text-emerald-900">{completedCount}</div>
+              <div className="text-lg sm:text-xl font-bold text-emerald-900">{completedCount}</div>
             </div>
-            <div className="p-3 rounded-xl bg-blue-50 border border-blue-200">
+            <div className="p-2.5 sm:p-3 rounded-xl bg-blue-50 border border-blue-200">
               <div className="text-xs text-blue-700 font-medium mb-1">In Progress</div>
-              <div className="text-xl font-bold text-blue-900">2</div>
+              <div className="text-lg sm:text-xl font-bold text-blue-900">2</div>
             </div>
-            <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+            <div className="p-2.5 sm:p-3 rounded-xl bg-slate-50 border border-slate-200">
               <div className="text-xs text-slate-700 font-medium mb-1">Pending</div>
-              <div className="text-xl font-bold text-slate-900">{missions.length - completedCount - 2}</div>
+              <div className="text-lg sm:text-xl font-bold text-slate-900">{missions.length - completedCount - 2}</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Mission Cards */}
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         {missions.map((mission, index) => (
           <MissionCard key={`${day}-${index}`} mission={mission} index={index} />
         ))}
